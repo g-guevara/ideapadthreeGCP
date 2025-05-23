@@ -14,7 +14,7 @@ RUN npm install
 RUN npm run build
 
 # Expone el puerto donde Next.js corre por defecto
-EXPOSE 3000
+EXPOSE 8080
 
 # Comando para iniciar el servidor
 CMD ["npm", "start"]
