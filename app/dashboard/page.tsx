@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import IdeaForm from '@/components/ideas/IdeaForm';
 import ApplicationList from '@/components/application/ApplicationList';
-import { getIdeas, getApplicationsByUserId, getApplicationsByIdeaId } from '@/lib/store';
+import { getIdeas, getApplicationsByUserId, getApplicationsByIdeaId, setCurrentIdeaId } from '@/lib/store';
 import { Plus, Send, Inbox } from 'lucide-react';
 
 export default function DashboardPage() {

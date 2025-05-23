@@ -1,13 +1,13 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 function ParticleField() {
-  const points = useRef();
-  
-  useFrame((state) => {
+  const points = useRef<THREE.Points>(null);
+
+  useFrame(() => {
     if (points.current) {
       points.current.rotation.x += 0.0005;
       points.current.rotation.y += 0.0005;
@@ -16,8 +16,7 @@ function ParticleField() {
 
   const particlesCount = 1000;
   const positions = new Float32Array(particlesCount * 3);
-  
-  for (let i = 0; i < particlesCount * 3; i++) {
+  for (let i = 0; i < positions.length; i++) {
     positions[i] = (Math.random() - 0.5) * 10;
   }
 
@@ -26,7 +25,6 @@ function ParticleField() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={particlesCount}
           array={positions}
           itemSize={3}
         />
@@ -49,11 +47,9 @@ export default function ThreeJSBackground() {
           position: [0, 0, 5],
           fov: 75,
           near: 0.1,
-          far: 1000
+          far: 1000,
         }}
-        style={{
-          background: 'rgba(0, 0, 0, 0.2)'
-        }}
+        style={{ background: 'rgba(0, 0, 0, 0.2)' }}
       >
         <ParticleField />
       </Canvas>
